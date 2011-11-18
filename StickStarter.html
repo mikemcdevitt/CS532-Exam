@@ -40,7 +40,7 @@
 
             function init()
             {
-               canvas = document.getElementById("stickScene");
+               canvas = new Kinetic_2d("stickScene");
                context = canvas.getContext("2d");
 			   
 			   armLength = 160;
@@ -62,7 +62,12 @@
 			function updateStage(){
                 //var linearSpeed = 100; // pixels / second
                 var linearDistEachFrame = linearSpeed *
-                kin.getTimeInterval() / 1000;
+                canvas.getTimeInterval() / 5000;
+				if (stage2.stageScale >= stage2.finalScale)
+				stage2.stageScale -= 0.1;
+				
+				if (stage3.stageRotate >= stage3.finalRotate)
+				stage3.finalRotate -= 0.1;
 			}
 			
 			function stage(){
@@ -82,9 +87,12 @@
             window.onload = function() {
                init();
 
-			//canvas.setDrawStage(function(){
-                    //updateStage();
-                    //canvas.clear();
+			canvas.setDrawStage(function(){
+                    updateStage();
+                    canvas.clear();
+                    var context = canvas.getContext();
+                    context.beginPath();
+					
                // save state 1
                context.save();
                // translate to the center of the canvas
@@ -113,8 +121,8 @@
                // draw arm without the stack
                drawArm( 0, 0);
 			   
-			   context.translate(100, 100);
-			   drawTriangle(1, 0, 50, 50, 75, 0);
+			   //context.translate(100, 100);
+			   //drawTriangle(1, 0, 50, 50, 75, 0);
 
                // Advice: Organize the inline block of code from here
                // until 'init()' just above into hierarchical routines.
@@ -122,13 +130,14 @@
                // Also note that I'm always calling drawArm with the place-holder
                // argument of (0,0); that's useless.  Instead, I could
                // have passed the final destination coordinate.    
-        //});
+        	});
                 
-                //canvas.startAnimation();
+                canvas.startAnimation();
             };
         </script> 
     </head> 
-    <body onmousedown="return false;"> 
-        <canvas id="stickScene" width="960" height="640"></canvas> 
+    <body onmousedown="return false;">
+        <hr> 
+    <canvas id="stickScene" width="960" height="640"></canvas> 
     </body>
 </html>
