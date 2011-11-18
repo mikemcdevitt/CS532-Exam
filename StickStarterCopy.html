@@ -19,9 +19,14 @@
 			}
 			function drawTriangle(vx1, vy1, vx2, vy2, vx3, vy3)
 			{
-				drawSide( vx1, vy1, vx2, vy2 );
-				drawSide( vx2, vy2, vx3, vy3 );
-				drawSide( vx3, vy3, vx1, vy1 );
+    			context.lineWidth = armWidth;
+    			context.strokeStyle = lineColor;
+				context.moveTo(vx1, vy1);
+				context.lineTo(vx2, vy2);
+				//context.moveTo(0,0);
+				context.lineTo(vx3,vy3);
+				context.lineTo(vx1, vy1);
+				context.stroke();
 			}
             function drawArm(x, y)
             {
@@ -78,19 +83,23 @@
                context.rotate( Math.PI / 6 );
 
                // draw arm using state 3
-               drawArm( 0, 0 );
+               //drawArm( 0, 0 );
+			   
+			   drawTriangle(1, 1, 50, 50, 75, 0);
 
                context.restore();
                //drawArm( 80, 80, 80, 80 );
+			   
+			   
                context.restore();
                // draw arm using state 1
-               drawArm( 0, 0 );
+               //drawArm( 0, 0 );
 
                context.restore();
                // draw arm without the stack
-               drawArm( 0, 0);
+               //drawArm( 0, 0);
 			   
-			   drawTriangle(1, 1, 50, 50, 75, 75);
+			   //drawTriangle(1, 1, 50, 50, 75, 75);
 
                // Advice: Organize the inline block of code from here
                // until 'init()' just above into hierarchical routines.
