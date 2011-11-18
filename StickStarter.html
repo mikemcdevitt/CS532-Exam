@@ -63,6 +63,16 @@
                 var linearDistEachFrame = linearSpeed *
                 kin.getTimeInterval() / 1000;
 			}
+			
+			function stage(){
+				this.stageScale = 1;
+				this.stageRotate = 0;
+			}
+			
+			stage2 = new stage();
+			stage3 = new stage();
+			stage2.stageScale = 1.2;
+			stage3.stageRotate = ( Math.PI / 6 );
 
             window.onload = function() {
                init();
@@ -76,12 +86,12 @@
                // save state 2
                context.save();
                // grow arm by 20%
-               context.scale( 1.2, 1.2 );
+               context.scale( stage2.stageScale, stage2.stageScale );
 
                // save state 3
                context.save(); 
                // rotate by 30 degress clockwise
-               context.rotate( Math.PI / 6 );
+               context.rotate( stage3.stageRotate );
 
                // draw arm using state 3
                drawArm( 0, 0 );
