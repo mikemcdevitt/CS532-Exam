@@ -20,8 +20,8 @@
 				context.fillStyle = '#00f';
     			context.lineWidth = armWidth;
     			context.strokeStyle = "black";
-				context.moveTo(x1 - (armLength / 2), y1 - (armLength / 2));
-				context.lineTo(x2 + (armLength / 2), y2 + (armLength / 2));
+				context.moveTo(x1 - (armLength / 2), y1);
+				context.lineTo(x2 + (armLength / 2), y2);
 				context.stroke();
             }
 
@@ -62,17 +62,17 @@
                context.rotate( Math.PI / 6 );
 
                // draw arm using state 3
-               drawArm( 80, 80, 80, 80 );
+               drawArm( 0, 0, 0, 0 );
 
                context.restore();
-               drawArm( 80, 80, 80, 80 );
+               //drawArm( 80, 80, 80, 80 );
                context.restore();
                // draw arm using state 1
-               drawArm( 80, 80, 80, 80 );
+               drawArm( 0, 0, 0, 0 );
 
                context.restore();
                // draw arm without the stack
-               drawArm( 80, 80, 80, 80);
+               drawArm( 0, 0, 0, 0);
 
                // Advice: Organize the inline block of code from here
                // until 'init()' just above into hierarchical routines.
