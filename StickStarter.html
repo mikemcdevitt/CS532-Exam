@@ -7,14 +7,19 @@
             var armWidth = 160; 
 			
             var armHeight = 10;
+			
 
             function drawArm(x, y)
             {
+				context.lineWidth = 10;
+				
                 this.x = x;
                 this.y = y;
                 this.width = armWidth;
                 this.height = armHeight;
-                context.fillRect(-armWidth / 2, -armHeight / 2, armWidth, armHeight);
+				context.moveTo(0,0);
+                context.lineTo(x,y);
+				context.Stroke;
             }
 
             function init()
