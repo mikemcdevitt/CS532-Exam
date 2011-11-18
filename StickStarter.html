@@ -7,19 +7,14 @@
             var armWidth = 160; 
 			
             var armHeight = 10;
-			
 
             function drawArm(x, y)
             {
-				context.lineWidth = 10;
-				
                 this.x = x;
                 this.y = y;
                 this.width = armWidth;
                 this.height = armHeight;
-				context.moveTo(0,0);
-                context.lineTo(x,y);
-				context.Stroke;
+                context.fillRect(-armWidth / 2, -armHeight / 2, armWidth, armHeight);
             }
 
             function init()
@@ -59,6 +54,7 @@
                drawArm( 0,0 );
 
                context.restore();
+			   drawArm( 0,0 );
                context.restore();
                // draw arm using state 1
                drawArm( 0,0 );
