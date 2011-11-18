@@ -50,6 +50,14 @@
 			   
 			   
 				linearSpeed = 100; // pixels / second
+				
+				stage2 = new stage();
+			stage3 = new stage();
+			stage2.stageScale = 1.2;
+			stage2.finalRotate = 2 * ( Math.PI / 3 );
+			stage3.stageRotate = ( Math.PI / 6 );
+			stage3.finalRotate = ( Math.PI / 3 );
+
 			}
 
             function run()
@@ -63,11 +71,11 @@
                 //var linearSpeed = 100; // pixels / second
                 var linearDistEachFrame = linearSpeed *
                 canvas.getTimeInterval() / 5000;
-				if (stage2.stageScale >= stage2.finalScale)
-				stage2.stageScale -= 0.1;
+				if (stage2.stageScale >= stage2.finalScale){
+				stage2.stageScale -= 0.1;}
 				
-				if (stage3.stageRotate >= stage3.finalRotate)
-				stage3.finalRotate -= 0.1;
+				if (stage3.stageRotate <= stage3.finalRotate){
+				stage3.stageRotate += 10;}
 			}
 			
 			function stage(){
@@ -77,23 +85,19 @@
 				this.finalRotate = 0;
 			}
 			
-			stage2 = new stage();
-			stage3 = new stage();
-			stage2.stageScale = 1.2;
-			stage2.finalRotate = 2 * ( Math.PI / 3 );
-			stage3.stageRotate = ( Math.PI / 6 );
-			stage3.finalRotate = ( Math.PI / 3 );
-
+			
             window.onload = function() {
                init();
+					
+               
 
 			canvas.setDrawStage(function(){
                     updateStage();
                     canvas.clear();
-                    var context = canvas.getContext();
+                    //context = canvas.getContext();
                     context.beginPath();
 					
-               // save state 1
+					// save state 1
                context.save();
                // translate to the center of the canvas
                context.translate( canvas.width/2, canvas.height/2 );
@@ -101,6 +105,7 @@
                // save state 2
                context.save();
                // grow arm by 20%
+					
                context.scale( stage2.stageScale, stage2.stageScale );
 
                // save state 3
@@ -121,8 +126,9 @@
                // draw arm without the stack
                drawArm( 0, 0);
 			   
-			   //context.translate(100, 100);
+			   //context.translate(10, 10);
 			   //drawTriangle(1, 0, 50, 50, 75, 0);
+			   context.restore();
 
                // Advice: Organize the inline block of code from here
                // until 'init()' just above into hierarchical routines.

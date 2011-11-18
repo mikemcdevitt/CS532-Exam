@@ -5,9 +5,9 @@
     <script src="kinetic2d-v1.0.2.js"></script>
     <script>
             //var armWidth = 160; 
-			
+
             //var armHeight;
-			
+
 			//var armLength;
 			function drawSide(x1, y1, x2, y2)
 			{
@@ -29,10 +29,10 @@
 			}
             function drawArm(x, y)
             {
-				
+
                 //this.x = x;
                 //this.y = y;
-				
+
                 //context.fillRect(-armWidth / 2, -armHeight / 2, armWidth, armHeight);
 				//context.fillStyle = '#00f';
     			context.lineWidth = armWidth;
@@ -46,10 +46,10 @@
             {
                canvas = document.getElementById("stickScene");
                context = canvas.getContext("2d");
-			   
+
 			   armLength = 160;
 			   armWidth = 3;
-			   
+
     		   lineColor = "black";
                // More initialization stuff should go here.
                // I could have put armWidth and armHeight in here too.
@@ -64,48 +64,18 @@
 
             window.onload = function() {
                init();
-
-			
-               // save state 1
-               context.save();
+			   
+			   context.save();
                // translate to the center of the canvas
                context.translate( canvas.width/2, canvas.height/2 );
-
-               // save state 2
-               context.save();
-               // grow arm by 20%
-               context.scale( 1.2, 1.2 );
-
-               // save state 3
-               context.save(); 
-               // rotate by 30 degress clockwise
-               context.rotate( Math.PI / 6 );
-
-               // draw arm using state 3
-               //drawArm( 0, 0 );
 			   
-			   drawTriangle(0, 0, 50, 50, 75, 0);
+               // grow arm by 50%
+               context.scale( 1.5, 1.5 );
+			   drawTriangle(0, 100, 100 * Math.sqrt(2) / 2, -100 * (Math.sqrt(2)) / 2, -100 * (Math.sqrt(2)) / 2,
+			    -100 * (Math.sqrt(2)) / 2);
 
-               context.restore();
-               //drawArm( 80, 80, 80, 80 );
-			   
-			   
-               context.restore();
-               // draw arm using state 1
-               //drawArm( 0, 0 );
-
-               context.restore();
-               // draw arm without the stack
-               //drawArm( 0, 0);
-			   
-			   //drawTriangle(1, 1, 50, 50, 75, 75);
-
-               // Advice: Organize the inline block of code from here
-               // until 'init()' just above into hierarchical routines.
-               // 
-               // Also note that I'm always calling drawArm with the place-holder
-               // argument of (0,0); that's useless.  Instead, I could
-               // have passed the final destination coordinate.
+              context.restore();
+			  
             };
         </script> 
     </head> 
