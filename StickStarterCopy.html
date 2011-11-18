@@ -44,37 +44,84 @@
 
             function init()
             {
-               canvas = document.getElementById("stickScene");
+				
+               kin = new Kinetic_2d("stickScene");
+               canvas = kin.getCanvas();
                context = canvas.getContext("2d");
 
 			   armLength = 160;
 			   armWidth = 3;
+			   rotSmallT = 0;
+			   rotBigT = 0;
 
     		   lineColor = "black";
-               // More initialization stuff should go here.
-               // I could have put armWidth and armHeight in here too.
-            }
-
-            function run()
-            {
-                // Update parameters here.
-                // Call this function at every iteration of the animation.
-                // Notice the js library that I included and didn't use - details in the reading
-            }
-
-            window.onload = function() {
-               init();
+			   
+			   
 			   
 			   context.save();
                // translate to the center of the canvas
                context.translate( canvas.width/2, canvas.height/2 );
+               // More initialization stuff should go here.
+               // I could have put armWidth and armHeight in here too.
+            }
+			
+			function updateStage()
+			{
+				rotBigT = rotBigT - 0.01;
+				rotSmallT = rotSmallT + 0.03;
+			}
+
+            function run()
+            {
+				
+                    kin.clear();
+                kin.setDrawStage(function(){									
+				canvas = kin.getCanvas();
+				
+				updateStage();
+
+			   drawBigT();
+			   drawSmallT();
+			  
+
+				});
+
+				kin.startAnimation();
+            }
+			
+			function drawBigT()
+			{
+				kin.clear();
+					context.save();
+			   
+			   context.rotate( rotBigT );
 			   
                // grow arm by 50%
-               context.scale( 1.5, 1.5 );
+               context.scale( 2.5, 2.5 );
 			   drawTriangle(0, 100, 100 * Math.sqrt(2) / 2, -100 * (Math.sqrt(2)) / 2, -100 * (Math.sqrt(2)) / 2,
 			    -100 * (Math.sqrt(2)) / 2);
 
               context.restore();
+			}
+			
+			function drawSmallT()
+			{
+				context.save();
+				
+				context.rotate( rotSmallT );
+				
+				//shrink by 50%
+				context.scale( 0.5, 0.5 );
+			   drawTriangle(0, 100, 100 * Math.sqrt(2) / 2, -100 * (Math.sqrt(2)) / 2, -100 * (Math.sqrt(2)) / 2,
+			    -100 * (Math.sqrt(2)) / 2);
+				context.restore();
+			}
+
+            window.onload = function() {
+               init();
+			   
+			   run()
+			  
 			  
             };
         </script> 
