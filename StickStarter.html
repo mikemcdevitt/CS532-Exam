@@ -47,9 +47,10 @@
 			   armWidth = 3;
 			   
     		   lineColor = "black";
-               // More initialization stuff should go here.
-               // I could have put armWidth and armHeight in here too.
-            }
+			   
+			   
+				linearSpeed = 100; // pixels / second
+			}
 
             function run()
             {
@@ -59,25 +60,31 @@
             }
 			
 			function updateStage(){
-                var linearSpeed = 100; // pixels / second
+                //var linearSpeed = 100; // pixels / second
                 var linearDistEachFrame = linearSpeed *
                 kin.getTimeInterval() / 1000;
 			}
 			
 			function stage(){
+				this.finalScale = 1;
 				this.stageScale = 1;
 				this.stageRotate = 0;
+				this.finalRotate = 0;
 			}
 			
 			stage2 = new stage();
 			stage3 = new stage();
 			stage2.stageScale = 1.2;
+			stage2.finalRotate = 2 * ( Math.PI / 3 );
 			stage3.stageRotate = ( Math.PI / 6 );
+			stage3.finalRotate = ( Math.PI / 3 );
 
             window.onload = function() {
                init();
 
-			
+			//canvas.setDrawStage(function(){
+                    //updateStage();
+                    //canvas.clear();
                // save state 1
                context.save();
                // translate to the center of the canvas
@@ -114,7 +121,10 @@
                // 
                // Also note that I'm always calling drawArm with the place-holder
                // argument of (0,0); that's useless.  Instead, I could
-               // have passed the final destination coordinate.
+               // have passed the final destination coordinate.    
+        //});
+                
+                //canvas.startAnimation();
             };
         </script> 
     </head> 
