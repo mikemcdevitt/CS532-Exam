@@ -57,6 +57,12 @@
                 // Call this function at every iteration of the animation.
                 // Notice the js library that I included and didn't use - details in the reading
             }
+			
+			function updateStage(){
+                var linearSpeed = 100; // pixels / second
+                var linearDistEachFrame = linearSpeed *
+                kin.getTimeInterval() / 1000;
+			}
 
             window.onload = function() {
                init();
@@ -90,7 +96,8 @@
                // draw arm without the stack
                drawArm( 0, 0);
 			   
-			   drawTriangle(1, 1, 50, 50, 75, 75);
+			   context.translate(100, 100);
+			   drawTriangle(1, 0, 50, 50, 75, 0);
 
                // Advice: Organize the inline block of code from here
                // until 'init()' just above into hierarchical routines.
