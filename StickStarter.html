@@ -10,11 +10,18 @@
 
             function drawArm(x, y)
             {
+				
                 this.x = x;
                 this.y = y;
                 this.width = armWidth;
                 this.height = armHeight;
                 context.fillRect(-armWidth / 2, -armHeight / 2, armWidth, armHeight);
+				
+    context.lineWidth = 5;
+    context.strokeStyle = "black";
+				context.moveTo(x * 2, y * 2);
+				context.lineTo(x * 4, y * 4);
+				context.stroke();
             }
 
             function init()
