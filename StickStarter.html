@@ -4,10 +4,11 @@
     <link rel="stylesheet" href="stick.css" type="text/css">
     <script src="kinetic2d-v1.0.2.js"></script>
     <script>
-            var armWidth = 160; 
+            //var armWidth = 160; 
 			
-            var armHeight = 10;
-			var armLength = 160;
+            //var armHeight;
+			
+			//var armLength;
 
             function drawArm(x1, y1, x2, y2)
             {
@@ -17,7 +18,7 @@
 				
                 //context.fillRect(-armWidth / 2, -armHeight / 2, armWidth, armHeight);
 				context.fillStyle = '#00f';
-    			context.lineWidth = 5;
+    			context.lineWidth = armWidth;
     			context.strokeStyle = "black";
 				context.moveTo(x1, y1);
 				context.lineTo(x2, y2);
@@ -28,6 +29,9 @@
             {
                canvas = document.getElementById("stickScene");
                context = canvas.getContext("2d");
+			   
+			   armLength = 160;
+			   armWidth = 3;
                // More initialization stuff should go here.
                // I could have put armWidth and armHeight in here too.
             }
@@ -61,10 +65,10 @@
                drawArm( 1,1, 60, 1 );
 
                context.restore();
-			   //drawArm( 1,1 );
+               drawArm( 1,1, 60, 1 );
                context.restore();
                // draw arm using state 1
-               //drawArm( 1,1 );
+               drawArm( 1,1, 60, 1 );
 
                context.restore();
                // draw arm without the stack
