@@ -15,12 +15,12 @@
                 this.y = y;
                 this.width = armWidth;
                 this.height = armHeight;
-                context.fillRect(-armWidth / 2, -armHeight / 2, armWidth, armHeight);
-				
-    context.lineWidth = 5;
-    context.strokeStyle = "black";
-				context.moveTo(x * 2, y * 2);
-				context.lineTo(x * 4, y * 4);
+                //context.fillRect(-armWidth / 2, -armHeight / 2, armWidth, armHeight);
+				context.fillStyle = '#00f';
+    			context.lineWidth = 5;
+    			context.strokeStyle = "black";
+				context.moveTo(x, y);
+				context.lineTo(x, y + armWidth);
 				context.stroke();
             }
 
@@ -58,17 +58,17 @@
                context.rotate( Math.PI / 6 );
 
                // draw arm using state 3
-               drawArm( 0,0 );
+               drawArm( 1,1 );
 
                context.restore();
-			   drawArm( 0,0 );
+			   drawArm( 1,1 );
                context.restore();
                // draw arm using state 1
-               drawArm( 0,0 );
+               drawArm( 1,1 );
 
                context.restore();
                // draw arm without the stack
-               drawArm( 0,0 );
+               drawArm( 1,1 );
 
                // Advice: Organize the inline block of code from here
                // until 'init()' just above into hierarchical routines.
